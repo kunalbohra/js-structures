@@ -1,0 +1,23 @@
+{
+  "name": "js-structures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "LinkedList.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kunalbohra/js-structures.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kunalbohra/js-structures/issues"
+  },
+  "homepage": "https://github.com/kunalbohra/js-structures#readme",
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
+}
