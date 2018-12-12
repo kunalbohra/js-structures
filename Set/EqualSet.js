@@ -34,6 +34,19 @@ class EqualSet extends Set {
     }
   }
 
+  has(value) {
+    if (typeof value !== 'object') {
+      //this could probably be removed, EqualSet would just be an overhead if values are primitive types
+      return super.has(value);
+    } else {
+      const valueHash = EqualSet.hash(value, ...this.compareProps);
+
+      return Array.from(this.values()).some(
+        obj => EqualSet.hash(obj, ...this.compareProps) === valueHash
+      ); //check if there are any objects in the
+    }
+  }
+
   static hash(obj, ...props) {
     const prime = 31;
     let hash = 1;
