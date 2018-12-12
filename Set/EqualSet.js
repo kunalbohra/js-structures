@@ -1,3 +1,10 @@
+/**
+ * native JS Set allows objects with similar shape and props/values to be inserted.
+ * EqualSet (currently only works for numeric values) ignores subsequent addition of object where keys and values are the same
+ * based on compareProps
+ * see tests for example usage
+ */
+
 class EqualSet extends Set {
   constructor(...compareProps) {
     super();
