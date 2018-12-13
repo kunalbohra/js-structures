@@ -16,6 +16,11 @@ class EqualSet extends Set {
       //check if a "similar" object exists in the set, if not add it
       super.add(value);
     }
+    return this;
+  }
+
+  delete(value) {
+    return this.has(value) ? super.delete(value) : false;
   }
 
   has(value) {
