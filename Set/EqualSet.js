@@ -15,36 +15,28 @@ class EqualSet extends Set {
     if (typeof value !== 'object') {
       super.add(value);
     } else {
-      const objectValues = Array.from(this.values()).filter(obj => {
-        return typeof obj === 'object';
-      });
-      if (objectValues.length < 1) {
+      if (!this.hasValue(value)) {
+        //check if a "similar" object exists in the set, if not add it
         super.add(value);
-      } else {
-        const hasDups = objectValues.some(obj => {
-          return (
-            EqualSet.hash(obj, ...this.compareProps) ===
-            EqualSet.hash(value, ...this.compareProps)
-          );
-        });
-        if (!hasDups) {
-          super.add(value);
-        }
       }
     }
   }
 
-  has(value) {
-    if (typeof value !== 'object') {
-      //this could probably be removed, EqualSet would just be an overhead if values are primitive types
-      return super.has(value);
-    } else {
-      const valueHash = EqualSet.hash(value, ...this.compareProps);
+  hasValue(value) {
+    return Array.from(this.values()).some(obj => {
+      return (
+        EqualSet.hash(obj, ...this.compareProps) ===
+        EqualSet.hash(value, ...this.compareProps)
+      );
+    });
+  }
 
-      return Array.from(this.values()).some(
-        obj => EqualSet.hash(obj, ...this.compareProps) === valueHash
-      ); //check if there are any objects in the
-    }
+  has(value) {
+    const valueHash = EqualSet.hash(value, ...this.compareProps);
+
+    return Array.from(this.values()).some(
+      obj => EqualSet.hash(obj, ...this.compareProps) === valueHash
+    ); //check if there are any objects in the set with the same hash as the value object
   }
 
   static hash(obj, ...props) {
