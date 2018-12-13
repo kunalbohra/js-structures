@@ -12,19 +12,10 @@ class EqualSet extends Set {
   }
 
   add(value) {
-    if (!this.hasValue(value)) {
+    if (!this.has(value)) {
       //check if a "similar" object exists in the set, if not add it
       super.add(value);
     }
-  }
-
-  hasValue(value) {
-    return Array.from(this.values()).some(obj => {
-      return (
-        EqualSet.hash(obj, ...this.compareProps) ===
-        EqualSet.hash(value, ...this.compareProps)
-      );
-    });
   }
 
   has(value) {
