@@ -7,9 +7,8 @@ const ohash = require('object-hash');
  */
 
 class EqualSet extends Set {
-  constructor(...compareProps) {
+  constructor() {
     super();
-    this.compareProps = compareProps;
     this.valuesHash = new Map();
   }
 
