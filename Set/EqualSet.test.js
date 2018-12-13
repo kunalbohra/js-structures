@@ -19,4 +19,16 @@ describe('tests for EqualSet behavior', () => {
     expect(eq.has({ a: 1, b: 2 })).toBe(true);
     expect(eq.has({ a: 2, b: 1 })).toBe(false);
   });
+
+  test('delete removes correct item', () => {
+    const eq = new EqualSet('a', 'b');
+    const obj1 = { a: 1 };
+    eq.add(obj1);
+    const obj2 = { a: 1, b: 2 };
+    eq.add(obj2);
+    expect(eq.size).toBe(2);
+    expect(eq.delete(obj1)).toBe(true);
+    expect(eq.size).toBe(1);
+    expect(eq.has(obj2)).toBe(true);
+  });
 });
