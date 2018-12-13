@@ -12,13 +12,9 @@ class EqualSet extends Set {
   }
 
   add(value) {
-    if (typeof value !== 'object') {
+    if (!this.hasValue(value)) {
+      //check if a "similar" object exists in the set, if not add it
       super.add(value);
-    } else {
-      if (!this.hasValue(value)) {
-        //check if a "similar" object exists in the set, if not add it
-        super.add(value);
-      }
     }
   }
 
@@ -41,11 +37,11 @@ class EqualSet extends Set {
 
   static hash(obj, ...props) {
     const prime = 31;
-    let hash = 1;
+
     return props.reduce((accum, curr) => {
       accum = accum * prime + (obj[curr] || 0);
       return accum;
-    }, hash);
+    }, 1);
   }
 }
 
