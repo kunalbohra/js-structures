@@ -9,13 +9,13 @@ const ohash = require('object-hash');
 class EqualSet extends Set {
   constructor() {
     super();
-    this.valuesHash = new Map();
+    this.valuesHash = new Set();
   }
 
   add(value) {
     if (!this.valuesHash.has(ohash(value))) {
       //check if a "similar" object exists in the set, if not add it
-      this.valuesHash.set(ohash(value), value);
+      this.valuesHash.add(ohash(value));
       super.add(value);
     }
     return this;
