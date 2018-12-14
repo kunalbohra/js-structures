@@ -7,9 +7,13 @@ describe('tests for EqualSet behavior', () => {
     eq.add({ a: 1, b: 2, c: 3 });
     eq.add({ a: 2, b: 1 });
 
+    eq.add([1, 2, 3, 4, 5]);
+    eq.add([1, 2, 3, 4, 5]);
+    eq.add([5, 6, 7, 8, 9]);
+
     eq.add({ a: 5, b: 6 });
 
-    expect(eq.size).toBe(3);
+    expect(eq.size).toBe(5);
   });
 
   test('has works as expected', () => {
