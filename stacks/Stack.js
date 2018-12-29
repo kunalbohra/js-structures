@@ -1,3 +1,4 @@
+const EmptyStackException = require('../exceptions/EmptyStackException');
 class Stack {
   constructor() {
     this.storage = [];
@@ -12,6 +13,9 @@ class Stack {
   }
 
   pop() {
+    if (!this.storage.length) {
+      throw new EmptyStackException('pop called on empty stack');
+    }
     return this.storage.pop();
   }
 

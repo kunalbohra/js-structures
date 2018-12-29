@@ -22,4 +22,13 @@ describe('tests for Stack', () => {
     expect(stack.peek()).toBe(5);
     expect(stack.size).toBe(5);
   });
+
+  test('invoking pop on empty stack throws EmptyStackException', () => {
+    const stack = new Stack();
+    try {
+      stack.pop();
+    } catch (err) {
+      expect(err.message).toBe('pop called on empty stack');
+    }
+  });
 });
