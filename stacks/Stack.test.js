@@ -31,4 +31,13 @@ describe('tests for Stack', () => {
       expect(err.message).toBe('pop called on empty stack');
     }
   });
+
+  test('invoking peek on empty stack throws EmptyStackException', () => {
+    const stack = new Stack();
+    try {
+      stack.peek();
+    } catch (err) {
+      expect(err.message).toBe('peek called on empty stack');
+    }
+  });
 });

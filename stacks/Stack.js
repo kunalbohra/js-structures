@@ -20,6 +20,9 @@ class Stack {
   }
 
   peek() {
+    if (!this.storage.length) {
+      throw new EmptyStackException('peek called on empty stack');
+    }
     return this.storage[this.size - 1];
   }
 }
