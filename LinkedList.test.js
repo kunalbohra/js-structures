@@ -21,4 +21,11 @@ describe('LinkedList tests', () => {
     list.addToHead(1);
     expect(list.isEmpty()).toBe(false);
   });
+
+  test('LinkedList is an iterable', () => {
+    const list = new LinkedList();
+
+    [1, 2, 3, 4, 5].forEach(list.addToHead);
+    expect([...list]).toEqual([5, 4, 3, 2, 1]);
+  });
 });

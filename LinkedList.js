@@ -32,6 +32,13 @@ class LinkedList {
     this.head = this.head.next;
     return poppedValue;
   }
+  *[Symbol.iterator]() {
+    let curr = this.head;
+    while (curr != null) {
+      yield curr.value;
+      curr = curr.next;
+    }
+  }
 }
 
 module.exports = { LinkedList };
